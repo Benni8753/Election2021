@@ -1,0 +1,20 @@
+.ui.nav {
+  background: linear-gradient(to right, #0091ad, #fff94c);
+}
+
+.ui.header {
+  margin: 0;
+}
+
+.formAdd {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#listItem {
+  display: flex;
+}
+
+body {
+  background-color: #fff4e4;
+}
