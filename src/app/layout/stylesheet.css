@@ -18,3 +18,7 @@
 body {
   background-color: #fff4e4;
 }
+
+.ui.adviseBoxHeader {
+  margin-left: 2em;
+}

@@ -9,6 +9,9 @@ export default function EditPartyForm({
   selectedPartyFromAppJSX,
   createPartyFromED,
   editPartyFromEd,
+  sameEntry,
+  emptyEntry,
+  invalidNumber,
 }) {
   const initialValues = selectedPartyFromAppJSX ?? {
     partyName: "",
@@ -47,7 +50,9 @@ export default function EditPartyForm({
             onChange={(e) => handleInputChange(e)}
           />
         </Form.Field>
+
         <Form.Field>
+          <Header as="h4">Previous Votes</Header>
           <input
             type="text"
             placeholder="previous votes"
@@ -56,6 +61,7 @@ export default function EditPartyForm({
             onChange={(e) => handleInputChange(e)}
           />
         </Form.Field>
+        <Header as="h4">Votes</Header>
         <Form.Field>
           <input
             type="text"

@@ -1,7 +1,7 @@
 import React from "react";
 import PartyListItem from "./PartyListItem";
 
-import { Table, Header } from "semantic-ui-react";
+import { Table, Header, Button } from "semantic-ui-react";
 
 export default function PartyList({
   setEditFormOpenFromApp,
@@ -11,11 +11,23 @@ export default function PartyList({
   partyCount,
   decreasePartyCountFromED,
   addVoteToPartyFromED,
+  deleteVoteOfPartyFromED,
+  filterSmallPartiesFromED,
+  setFilterButton,
+  filterButton,
+  sortPartiesByName,
+  sortByV
 }) {
  
   return (
     <div>
-      <Header>{partyCount} parties are listed.</Header>
+      <Header>{partyCount} parties are listed.
+      {!filterButton ? <Button  floated="right" onClick={() => filterSmallPartiesFromED("filter")}>Filter</Button>
+      : <Button floated="right" onClick={() => filterSmallPartiesFromED("unfilter")}>Unfilter</Button>
+      }
+      <Button floated="right" onClick={() => sortPartiesByName()}>Sort by Name</Button>
+
+      </Header>
       <Table>
         <Table.Header>
           <Table.Row id="tableHeader">
@@ -35,7 +47,9 @@ export default function PartyList({
               decreasePartyCountFromED={decreasePartyCountFromED}
               setEditFormOpenFromApp={setEditFormOpenFromApp}
               addVoteToPartyFromED={addVoteToPartyFromED}
+              deleteVoteOfPartyFromED={deleteVoteOfPartyFromED}
               key={aParty.id}
+              filterButton={filterButton}
             />
           ))}
         </Table.Body>

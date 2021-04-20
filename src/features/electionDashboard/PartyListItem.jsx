@@ -7,7 +7,9 @@ export default function PartyListItem({
   deletePartyFromED,
   decreasePartyCountFromED,
   selectPartyFromAppJSX,
-  addVoteToPartyFromED
+  addVoteToPartyFromED,
+  deleteVoteOfPartyFromED,
+  filterButton,
 }) {
   function deleteClick(partyId) {
     decreasePartyCountFromED();
@@ -19,18 +21,36 @@ export default function PartyListItem({
     <Table.Row key={aParty.id}>
       <Table.Cell>{aParty.partyName}</Table.Cell>
       <Table.Cell>{aParty.previousVotes}</Table.Cell>
-      <Table.Cell>{aParty.previousVotes / aParty.votes} %</Table.Cell>
+      <Table.Cell>
+        {Math.floor((aParty.votes / aParty.previousVotes) * 100)} %
+      </Table.Cell>
       <Table.Cell>{aParty.votes}</Table.Cell>
       <Table.Cell>
-        <Button onClick={() => addVoteToPartyFromED(aParty.id)} > + </Button>
-        <Button> - </Button>
         <Button
+          disabled={filterButton}
+          onClick={() => addVoteToPartyFromED(aParty.id)}>
+          {" "}
+          +{" "}
+        </Button>
+        <Button
+          disabled={filterButton}
+          onClick={() => deleteVoteOfPartyFromED(aParty.id)}>
+          {" "}
+          -{" "}
+        </Button>
+        <Button
+          disabled={filterButton}
           primary
           onClick={() => selectPartyFromAppJSX(aParty)}
           color="teal">
           Edit
         </Button>
-        <Button color='red' onClick={() => deleteClick(aParty.id)}>X</Button>
+        <Button
+          disabled={filterButton}
+          color="red"
+          onClick={() => deleteClick(aParty.id)}>
+          X
+        </Button>
       </Table.Cell>
     </Table.Row>
   );

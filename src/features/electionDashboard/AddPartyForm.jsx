@@ -6,7 +6,8 @@ export default function AddPartyForm({
   setAllMyPartiesFromED,
   createPartyFromED,
   selectedPartyFromAppJSX,
-  increasePartyCountFromED
+  increasePartyCountFromED,
+  filterButton
 }) {
 
   let defaultValues = {
@@ -20,7 +21,6 @@ export default function AddPartyForm({
   const [values, setValues] = useState(defaultValues);
 
   function formSubmit() {
-    increasePartyCountFromED()
     createPartyFromED({
       ...values,
       id: cuid(),
@@ -55,7 +55,7 @@ export default function AddPartyForm({
         />
       </Form.Field>
       
-      <Button type="submit" positive>
+      <Button disabled={filterButton} type="submit" positive>
         Add Party
       </Button>
     </Form>
